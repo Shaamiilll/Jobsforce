@@ -1,33 +1,38 @@
-// backend/app.js
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
 import authRoutes from './routes/authRoutes.js';
+import connectDB from './config/db.js';
 
-// Initialize Express app
 const app = express();
+
+// Load environment variables
+import dotenv from 'dotenv';
+dotenv.config();
 
 // Middleware
 app.use(cors());
 app.use(morgan('dev'));
-app.use(express.json()); // For JSON data
+app.use(express.json()); // Parse JSON requests
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('✅ MongoDB connected'))
-.catch((err) => console.error('❗ Error connecting to MongoDB:', err));
+// MongoDB Connection
+connectDB();
 
 // API Routes
 app.use('/api/auth', authRoutes);
 
-// Error Handling
+// 404 Handler
+app.use((req, res, next) => {
+  res.status(404).json({ message: '🔍 Route not found' });
+});
+
+// Global Error Handling
 app.use((err, req, res, next) => {
-  console.error(err);
-  res.status(500).json({ message: 'Server Error' });
+  console.error('❗ Server Error:', err.message);
+  res.status(err.status || 500).json({
+    message: err.message || 'Internal Server Error',
+  });
 });
 
 export default app;
