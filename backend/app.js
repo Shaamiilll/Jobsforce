@@ -1,23 +1,14 @@
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
-import mongoose from 'mongoose';
 import authRoutes from './routes/authRoutes.js';
-import connectDB from './config/db.js';
 
 const app = express();
-
-// Load environment variables
-import dotenv from 'dotenv';
-dotenv.config();
 
 // Middleware
 app.use(cors());
 app.use(morgan('dev'));
-app.use(express.json()); // Parse JSON requests
-
-// MongoDB Connection
-connectDB();
+app.use(express.json()); 
 
 // API Routes
 app.use('/api/auth', authRoutes);

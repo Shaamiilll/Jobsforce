@@ -6,7 +6,8 @@ import User from '../models/User.js';
 // Register Controller
 export const registerUser = async (req, res) => {
   try {
-    const { firstName, lastName, email, password } = req.body;
+    const {  email, password } = req.body;
+    console.log(email , password)
 
     // Check if user already exists
     const userExists = await User.findOne({ email });
@@ -14,10 +15,14 @@ export const registerUser = async (req, res) => {
 
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
+    console.log(hashedPassword);
+    
 
     // Create user
-    const user = new User({ firstName, lastName, email, password: hashedPassword });
+    const user = new User({ email, password: hashedPassword });
     await user.save();
+    console.log(user);
+    
 
     res.status(201).json({ message: 'User registered successfully' });
 
