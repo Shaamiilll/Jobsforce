@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
-
-
+import { Toaster } from 'react-hot-toast';
 
 const Loginpage = lazy(() => import('./pages/Loginpage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage'));
+const HomePage = lazy(() => import('./pages/HomeScreen'));
 
 const App = () => (
   <Router>
@@ -15,12 +15,12 @@ const App = () => (
 
         {/* Lazy loaded login page */}
         <Route path="/login" element={<Loginpage />} />
-        <Route path="/register" element={<Loginpage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/home" element={<HomePage />} />
 
-        {/* Simple Home Page */}
-        <Route path="/home" element={<h1 className="text-3xl font-bold underline">Home Page</h1>} />
       </Routes>
     </Suspense>
+    <Toaster />
   </Router>
 );
 
