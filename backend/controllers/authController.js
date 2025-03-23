@@ -15,14 +15,11 @@ export const registerUser = async (req, res) => {
 
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
-    console.log(hashedPassword);
     
-
     // Create user
     const user = new User({ email, password: hashedPassword });
     await user.save();
-    console.log(user);
-    
+
 
     res.status(201).json({ message: 'User registered successfully' });
 
@@ -35,11 +32,11 @@ export const registerUser = async (req, res) => {
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
-
     // Check if user exists
     const user = await User.findOne({ email });
-    if (!user) return res.status(404).json({ message: 'User not found' });
 
+    if (!user) return res.status(404).json({ message: 'User not found' });
+    
     // Validate password
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) return res.status(400).json({ message: 'Invalid credentials' });
