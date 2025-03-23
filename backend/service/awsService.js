@@ -1,6 +1,6 @@
-const s3 = require('../config/awsConfig');
+import s3 from '../config/aws.js';
 
-async function uploadToS3(file) {
+export async function uploadToS3(file) {
   const params = {
     Bucket: process.env.AWS_BUCKET_NAME,
     Key: `resumes/${Date.now()}-${file.originalname}`,
@@ -15,5 +15,3 @@ async function uploadToS3(file) {
     throw new Error('Error uploading to S3');
   }
 }
-
-module.exports = { uploadToS3 };
