@@ -5,7 +5,6 @@ import axios from 'axios';
 export const uploadResume = async (req, res) => {
     try {
         const file = req.file;
-        console.log(file)
 
         if (!file) {
             return res.status(400).json({ error: 'No file uploaded' });
