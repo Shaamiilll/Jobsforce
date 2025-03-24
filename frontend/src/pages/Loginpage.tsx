@@ -87,7 +87,7 @@ const LoginPage = () => {
                     <button
                         type="submit"
                         disabled={loading}
-                        className={`w-full py-2 text-sm text-white rounded transition ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#1a1134] hover:bg-[#2a1f44]'}`}
+                        className={`w-full py-2 text-sm text-white rounded transition ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#1a1134] hover:bg-[#2a1f44] hover:cursor-pointer'}`}
                     >
                         {loading ? 'Signing in...' : 'Sign In'}
                     </button>
