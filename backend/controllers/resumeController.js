@@ -19,9 +19,6 @@ export const uploadResume = async (req, res) => {
         const mlResponse = await axios.post('http://localhost:8000/extract-skills/', {
             fileUrl,
         });
-        console.log(mlResponse.data);
-
-
 
         let skills = mlResponse.data.skills;
 

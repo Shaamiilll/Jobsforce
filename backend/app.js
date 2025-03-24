@@ -3,6 +3,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import authRoutes from './routes/authRoutes.js';
 import ResumeRoutes from './routes/resumeRoutes.js';
+import jobsRoutes from './routes/jobsRoutes.js';
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(express.json());
 // API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/resume', ResumeRoutes);
+app.use('/api/jobs', jobsRoutes);
 
 // 404 Handler
 app.use((req, res, next) => {
