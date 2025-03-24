@@ -12,19 +12,19 @@ def extract_skills(text):
     # generated from deepseek ai
     skills = [
     # Programming Languages
-    'Python', 'Java', 'JavaScript', 'TypeScript', 'C++', 'C#', 'C', 'Go', 'Rust', 
-    'Ruby', 'PHP', 'Swift', 'Kotlin', 'Scala', 'R', 'Perl', 'Dart', 'Elixir', 
+    'Python', 'Java', 'JavaScript', 'TypeScript', 'C++', 'C#', 'C', 'Go', 'Rust',
+    'Ruby', 'PHP', 'Swift', 'Kotlin', 'Scala', 'R', 'Perl', 'Dart', 'Elixir',
     'Haskell', 'Clojure', 'Groovy', 'Lua', 'Objective-C', 'Julia', 'Bash', 'Shell',
     
     # Frontend Technologies
-    'React', 'Angular', 'Vue.js', 'Svelte', 'Next.js', 'Nuxt.js', 'Gatsby', 
-    'HTML', 'CSS', 'Sass', 'Less', 'Tailwind CSS', 'Bootstrap', 'Material UI', 
+    'React', 'Angular', 'Vue.js', 'Svelte', 'Next.js', 'Nuxt.js', 'Gatsby',
+    'HTML', 'CSS', 'Sass', 'Less', 'Tailwind CSS', 'Bootstrap', 'Material UI',
     'Chakra UI', 'Ant Design', 'Styled Components', 'Redux', 'MobX', 'GraphQL',
     'Apollo', 'Webpack', 'Babel', 'Vite', 'Parcel', 'Jest', 'Cypress', 'Storybook',
     
     # Backend Technologies
     'Node.js', 'Express.js', 'NestJS', 'Django', 'Flask', 'FastAPI', 'Spring Boot',
-    'Micronaut', 'Quarkus', 'Ruby on Rails', 'Laravel', 'Symfony', 'ASP.NET', 
+    'Micronaut', 'Quarkus', 'Ruby on Rails', 'Laravel', 'Symfony', 'ASP.NET',
     'Phoenix', 'Gin', 'Fiber', 'Koa', 'Hapi', 'Socket.io', 'WebSockets',
     
     # Mobile Development
