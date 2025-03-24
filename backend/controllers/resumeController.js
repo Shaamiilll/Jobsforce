@@ -10,17 +10,22 @@ export const uploadResume = async (req, res) => {
             return res.status(400).json({ error: 'No file uploaded' });
         }
 
+    ;
         // Upload to AWS S3
-        const fileUrl = await uploadToS3(file);
+        let fileUrl = await uploadToS3(file);
+
 
         // Call ML API to extract skills (using FastAPI)
-        const mlResponse = await axios.post('http://localhost:8000/extract-skills', {
+        const mlResponse = await axios.post('http://localhost:8000/extract-skills/', {
             fileUrl,
         });
+        console.log(mlResponse.data);
 
-        const skills = mlResponse.data.skills;
 
-        res.status(200).json({ message: 'Resume uploaded successfully', fileUrl, skills });
+
+        let skills = mlResponse.data.skills;
+
+        res.status(200).json({ message: 'Resume uploaded successfully', skills });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
