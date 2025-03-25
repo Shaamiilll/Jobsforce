@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import showCred from '../components/showCred';
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -9,6 +10,9 @@ const LoginPage = () => {
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const HOST = import.meta.env.VITE_HOST_URL;
+    useEffect(() => {
+        showCred();
+    }, []);
 
     // Login Handle 
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
