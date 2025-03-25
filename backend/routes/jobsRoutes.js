@@ -1,8 +1,19 @@
-// backend/routes/authRoutes.js
 import express from 'express';
-import { jobs } from '../controllers/jobsController';
+import {
+    jobs,
+    searchJobsBySkills,
+    getJobById
+} from '../controllers/jobsController.js';
+
 const router = express.Router();
 
-router.get('/jobs' ,jobs )
+// GET all jobs
+router.get('/', jobs);
+
+// POST search jobs by skills
+router.post('/jobsbyskill' , searchJobsBySkills);
+
+// GET job by ID
+router.get('/:id', getJobById);
 
 export default router;
