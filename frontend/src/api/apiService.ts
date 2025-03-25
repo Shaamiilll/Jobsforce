@@ -22,9 +22,9 @@ export const uploadResume = async (file: File) => {
 
 export const findJobsBySkill = async (skills: string[]) => {
   try {
-    const response = await axios.post(
-      `${API_URL}/jobs/jobsbyskill`,
-      { skills },
+    console.log(skills)
+    const response = await axios.get(
+      `${API_URL}/jobs/recommended`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

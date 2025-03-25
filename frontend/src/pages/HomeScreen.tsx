@@ -1,4 +1,4 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import { findJobsBySkill, uploadResume } from '../api/apiService';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
@@ -7,12 +7,13 @@ import { useNavigate } from 'react-router-dom';
 type UploadResult = {
   skills: string[];
 };
-
 type Job = {
+  _id: string;
   title: string;
   company: string;
-  location: string;
-  link: string;
+  description: string;
+  skillsRequired: string[];
+  link?: string; // Optional, if available
 };
 
 const ResumeDashboard: React.FC = () => {
@@ -24,9 +25,6 @@ const ResumeDashboard: React.FC = () => {
   const [message, setMessage] = useState<string>('');
   const userEmail = localStorage.getItem('user');
   //remove
-
-  
-
 
   const handleLogout = () => {
     localStorage.removeItem("token")
@@ -55,7 +53,8 @@ const ResumeDashboard: React.FC = () => {
       }
 
       const jobsData = await findJobsBySkill(result.skills);
-      setJobs(jobsData);
+      setJobs(jobsData.jobs || []);
+      
       setMessage('Resume uploaded successfully!');
     } catch (error) {
       setMessage('Error processing resume');
@@ -72,7 +71,7 @@ const ResumeDashboard: React.FC = () => {
         <div className="flex items-center space-x-4">
 
           <div>
-            <p className="font-medium">{userEmail? `Welcome, ${userEmail}`: "Welcome"}</p>
+            <p className="font-medium">{userEmail ? `Welcome, ${userEmail}` : "Welcome"}</p>
             <p className="text-xs text-gray-500">Resume Dashboard</p>
           </div>
         </div>
@@ -171,15 +170,18 @@ const ResumeDashboard: React.FC = () => {
                     >
                       <h3 className="font-semibold text-lg mb-1">{job.title}</h3>
                       <p className="text-gray-600 mb-1">{job.company}</p>
-                      <p className="text-gray-500 text-sm mb-2">{job.location}</p>
-                      <a
-                        href={job.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 hover:underline inline-block"
-                      >
-                        View Job Details
-                      </a>
+                      <p className="text-gray-500 text-sm mb-2">{job.description}</p>
+                      <p className="text-sm text-gray-500">Required Skills: {job.skillsRequired.join(', ')}</p>
+                      {job.link && (
+                        <a
+                          href={job.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:underline inline-block"
+                        >
+                          View Job Details
+                        </a>
+                      )}
                     </div>
                   ))}
                 </div>
