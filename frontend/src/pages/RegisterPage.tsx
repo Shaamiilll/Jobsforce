@@ -102,7 +102,7 @@ const RegisterPage = () => {
                     <button
                         type="submit"
                         disabled={loading}
-                        className={`w-full py-2 text-sm text-white rounded transition ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#1a1134] hover:bg-[#2a1f44]'}`}
+                        className={`w-full py-2 text-sm  hover:cursor-pointer text-white rounded transition ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#1a1134] hover:bg-[#2a1f44]'}`}
                     >
                         {loading ? 'Creating account...' : 'Create Account'}
                     </button>
@@ -120,7 +120,7 @@ const RegisterPage = () => {
 
                 {/* Social Logins */}
                 <button
-                    className="w-full flex items-center justify-center py-2 text-xs text-gray-600 border border-gray-300 rounded hover:bg-gray-50"
+                    className="w-full flex items-center hover:cursor-pointer justify-center py-2 text-xs text-gray-600 border border-gray-300 rounded hover:bg-gray-50"
                 >
                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032 s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2 C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z" />
@@ -131,13 +131,13 @@ const RegisterPage = () => {
                 {/* Links */}
                 <div className="flex justify-between text-xs">
                     <button
-                        className="text-[#1a1134] font-medium hover:underline"
+                        className="text-[#1a1134] font-medium hover:underline hover:cursor-pointer"
                         onClick={() => navigate('/login')}
                     >
                         Already have an account?
                     </button>
                     <button
-                        className="text-gray-600 hover:underline"
+                        className="text-gray-600 hover:underline hover:cursor-pointer"
                         onClick={() => navigate('/')}
                     >
                         Back to Home
