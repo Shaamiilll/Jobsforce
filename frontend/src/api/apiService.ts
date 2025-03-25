@@ -20,9 +20,8 @@ export const uploadResume = async (file: File) => {
   }
 };
 
-export const findJobsBySkill = async (skills: string[]) => {
+export const findJobsBySkill = async () => {
   try {
-    console.log(skills)
     const response = await axios.get(
       `${API_URL}/jobs/recommended`,
       {

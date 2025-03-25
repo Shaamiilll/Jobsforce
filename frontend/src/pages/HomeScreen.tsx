@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { findJobsBySkill, uploadResume } from '../api/apiService';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
@@ -26,6 +26,19 @@ const ResumeDashboard: React.FC = () => {
   const userEmail = localStorage.getItem('user');
   //remove
 
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const jobsData = await findJobsBySkill();
+        setJobs(jobsData.jobs || []);
+      } catch (error) {
+        console.error("Error fetching jobs:", error);
+      }
+    };
+  
+    fetchJobs();
+  }, []); 
+  
   const handleLogout = () => {
     localStorage.removeItem("token")
     toast.success('Logged out successfully');
@@ -52,9 +65,9 @@ const ResumeDashboard: React.FC = () => {
         toast.error("Error while fetching skills")
       }
 
-      const jobsData = await findJobsBySkill(result.skills);
+      const jobsData = await findJobsBySkill();
       setJobs(jobsData.jobs || []);
-      
+
       setMessage('Resume uploaded successfully!');
     } catch (error) {
       setMessage('Error processing resume');
