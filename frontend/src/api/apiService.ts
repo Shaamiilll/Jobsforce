@@ -9,3 +9,8 @@ export const uploadResume = async (file: File) => {
   const response = await axios.post(`${API_URL}/resume/upload`, formData);
   return response.data;
 };
+
+export const findJobs = async () => {
+  const response = await axios.get(`${API_URL}/jobs`)
+  return response.data
+}
