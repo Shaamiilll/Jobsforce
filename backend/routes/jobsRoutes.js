@@ -4,6 +4,7 @@ import {
     searchJobsBySkills,
     getJobById
 } from '../controllers/jobsController.js';
+import isUser from '../middlewares/isUser.js';
 
 const router = express.Router();
 
@@ -11,7 +12,7 @@ const router = express.Router();
 router.get('/', jobs);
 
 // POST search jobs by skills
-router.post('/jobsbyskill' , searchJobsBySkills);
+router.post('/jobsbyskill', isUser, searchJobsBySkills);
 
 // GET job by ID
 router.get('/:id', getJobById);

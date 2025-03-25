@@ -1,4 +1,5 @@
 
+import User from '../models/User.js';
 import { uploadToS3 } from '../service/awsService.js';
 import axios from 'axios';
 
@@ -16,11 +17,12 @@ export const uploadResume = async (req, res) => {
 
 
         // Call ML API to extract skills (using FastAPI)
-        const mlResponse = await axios.post('http://localhost:8000/extract-skills/', {
+        const mlResponse = await axios.post(`${process.env.ML_HOST}/extract-skills/`, {
             fileUrl,
         });
 
         let skills = mlResponse.data.skills;
+
 
         res.status(200).json({ message: 'Resume uploaded successfully', skills });
     } catch (error) {

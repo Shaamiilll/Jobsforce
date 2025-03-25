@@ -36,7 +36,6 @@ export async function uploadToS3(file) {
     });
 
     const signedUrl = await getSignedUrl(s3, getObjectCommand, { expiresIn: 3600 });
-    console.log('🔗 Signed URL:', signedUrl);
 
     return signedUrl;
   } catch (error) {
