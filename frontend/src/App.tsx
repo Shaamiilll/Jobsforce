@@ -8,7 +8,7 @@ const HomePage = lazy(() => import('./pages/HomeScreen'));
 
 const App = () => (
   <Router>
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div className='flex justify-center items-center'>Loading...</div>}>
       <Routes>
         {/* Redirect from "/" to "/login" */}
         <Route path="/" element={<Navigate to="/login" />} />
