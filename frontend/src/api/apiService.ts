@@ -10,7 +10,12 @@ export const uploadResume = async (file: File) => {
   return response.data;
 };
 
-export const findJobs = async () => {
-  const response = await axios.get(`${API_URL}/jobs`)
-  return response.data
-}
+export const findJobsBySkill = async (skills:string[]) => {
+  try {
+    const response = await axios.post('http://localhost:5000/api/jobs/jobsbyskill', { skills });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching jobs by skill:', error);
+    throw error;
+  }
+};
