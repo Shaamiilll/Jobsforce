@@ -2,10 +2,8 @@ import axios from 'axios';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/useAuth';
 
 const LoginPage = () => {
-    const { login, } = useAuth();
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -24,9 +22,8 @@ const LoginPage = () => {
             });
 
             if (response.status == 200) {
-                login( response.data.user.email)
                 localStorage.setItem('token', response.data.token);
-                localStorage.setItem('token', response.data.token);
+                localStorage.setItem('user', response.data.user.email);
                 toast.success('Login successful!');
                 navigate('/home');
             } else {
