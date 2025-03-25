@@ -4,6 +4,7 @@
   import authRoutes from './routes/authRoutes.js';
   import ResumeRoutes from './routes/resumeRoutes.js';
   import jobsRoutes from './routes/jobsRoutes.js';
+  import { fetchJobsFromAPI } from './utils/jobFetcher.js';
 
   const app = express();
 
@@ -11,6 +12,8 @@
   app.use(cors());
   app.use(morgan('dev'));
   app.use(express.json()); 
+
+  fetchJobsFromAPI()
 
   // API Routes
   app.use('/api/auth', authRoutes);

@@ -11,7 +11,7 @@ export const uploadResume = async (req, res) => {
             return res.status(400).json({ error: 'No file uploaded' });
         }
 
-    ;
+        ;
         // Upload to AWS S3
         let fileUrl = await uploadToS3(file);
 
@@ -22,6 +22,7 @@ export const uploadResume = async (req, res) => {
         });
 
         let skills = mlResponse.data.skills;
+        await User.findByIdAndUpdate(req.user.id, { resumeUrl: fileUrl, skills });
 
 
         res.status(200).json({ message: 'Resume uploaded successfully', skills });

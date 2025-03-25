@@ -4,7 +4,8 @@ const userSchema = new mongoose.Schema(
   {
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    skills: { type: [String], default: [] }, 
+    resumeUrl: { type: String, default: "" }, // S3 Resume Link
+    skills: { type: [String], default: [] },
   },
   { timestamps: true }
 );
