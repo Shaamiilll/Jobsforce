@@ -1,18 +1,36 @@
 import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const token = localStorage.getItem('token')
 
 export const uploadResume = async (file: File) => {
   const formData = new FormData();
   formData.append('resume', file);
-
-  const response = await axios.post(`${API_URL}/resume/upload`, formData);
-  return response.data;
+  try {
+    const response = await axios.post(`${API_URL}/resume/upload`, formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching jobs by skill:', error);
+    throw error;
+  }
 };
 
-export const findJobsBySkill = async (skills:string[]) => {
+export const findJobsBySkill = async (skills: string[]) => {
   try {
-    const response = await axios.post('http://localhost:5000/api/jobs/jobsbyskill', { skills });
+    const response = await axios.post(
+      `${API_URL}/jobs/jobsbyskill`,
+      { skills },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     return response.data;
   } catch (error) {
     console.error('Error fetching jobs by skill:', error);
