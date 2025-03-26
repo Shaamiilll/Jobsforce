@@ -35,17 +35,13 @@ const RegisterPage = () => {
                 password: formData.password,
             });
             if (response.status == 200) {
-                console.log('====================================');
-                console.log(response);
-                console.log('====================================');
+               
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem('user', response.data.user.email);
                 toast.success('Registration successful!');
                 navigate('/home');
             } else {
-                console.log('====================================');
-                console.log(response);
-                console.log('====================================');
+
                 console.log(response.data);
                 toast.error(response.data.message)
             }
