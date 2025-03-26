@@ -20,7 +20,7 @@ const RegisterPage = () => {
         });
     };
 
-    // handle the register logic
+    // handle the register logics
     const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // Validate passwords match
