@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - "backend/**"  # Trigger only when changes are made inside the backend folder
+      - "backend/**"  # Trigger only when changes occur in the backend folder
 
 jobs:
   build:
@@ -14,15 +14,34 @@ jobs:
         node-version: [22.x]
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-      working-directory: backend  # Ensure npm install runs in the backend folder
-    - run: |
+        cache-dependency-path: backend/package-lock.json  # Cache npm dependencies
+
+    - name: Verify Backend Directory and Files
+      run: ls -la backend  # Debugging: Check if package-lock.json exists
+
+    - name: Install Dependencies
+      run: |
+        if [ -f "package-lock.json" ]; then
+          npm ci
+        else
+          npm install
+        fi
+      working-directory: backend
+
+    - name: Set Up Environment Variables
+      run: |
         touch .env
         echo "${{ secrets.PROD_ENV_FILE }}" > .env
-      working-directory: backend  # Ensure the .env is created in the correct folder
+      working-directory: backend
+
+    - name: Build and Start Application
+      run: npm run build
+      working-directory: backend
