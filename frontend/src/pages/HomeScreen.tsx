@@ -65,6 +65,8 @@ const ResumeDashboard: React.FC = () => {
     setIsLoading(true);
     try {
       const result: UploadResult = await uploadResume(file);
+      console.log(result);
+      
       setSkills(result.skills);
       if (result.skills) {
         toast.success("Skills Extracted")
