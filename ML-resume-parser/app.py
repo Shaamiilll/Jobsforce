@@ -20,7 +20,7 @@ async def health_check():
 async def extract_skills_from_url(file_data: FileUrlRequest):
     try:
         file_url = file_data.fileUrl
-        logging.info(f"Received file URL: {file_url}")
+        logging.info(f"Received request body: {file_data}")  # <-- Debugging
 
         # Download the file from the URL
         response = requests.get(file_url)
