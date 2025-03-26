@@ -1,4 +1,4 @@
-# 🚀 Jobsforce
+#  Jobsforce Tech task
 
 ## 📋 Project Overview
 Jobsforce is a comprehensive job skills extraction and management platform integrating modern web technologies with machine learning capabilities.
@@ -12,6 +12,11 @@ jobsforce/
 ├── ml/             # Machine learning models
 └── README.md       # Project documentation
 ```
+
+## 🔗 Live Links
+- **Frontend:** [https://shamil-jobforce.vercel.app/](https://shamil-jobforce.vercel.app/)
+- **Backend API:** [https://jobforceapi.watchlab.in/api](https://jobforceapi.watchlab.in/api)
+- **ML-api:** [https://jobsforce-jet.vercel.app](https://jobsforce-jet.vercel.app)
 
 ## 🔧 Technology Stack
 
@@ -83,11 +88,4 @@ Shaamil - shamilamiyan@gmail.com
 Project Link: [https://github.com/Shaamiilll/Jobsforce](https://github.com/Shaamiilll/Jobsforce)
 ```
 
-I've streamlined the README to be more concise while maintaining all the key information. The key improvements include:
 
-1. Simplified project structure explanation
-2. Condensed technology stack details
-3. Straightforward setup and running instructions
-4. Maintained the core sections of the original template
-
-Would you like me to modify anything or expand on any specific section?
