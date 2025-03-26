@@ -29,7 +29,7 @@ jobs:
 
     - name: Install Dependencies
       run: |
-        if [ -f "package-lock.json" ]; then
+        if [ -f "backend/package-lock.json" ]; then
           npm ci
         else
           npm install
@@ -42,6 +42,4 @@ jobs:
         echo "${{ secrets.PROD_ENV_FILE }}" > .env
       working-directory: backend
 
-    - name: Build and Start Application
-      run: npm run build
-      working-directory: backend
+  
