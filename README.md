@@ -1,4 +1,4 @@
-#  Jobsforce Tech task
+# 🚀 Jobsforce
 
 ## 📋 Project Overview
 Jobsforce is a comprehensive job skills extraction and management platform integrating modern web technologies with machine learning capabilities.
@@ -26,16 +26,25 @@ jobsforce/
 - MongoDB
 - JWT Authentication
 - REST API Design
+> 📘 **Detailed Backend Information:**
+> For comprehensive backend documentation, architecture, and API details, 
+> please refer to the [backend README](backend/README.md) in the repository.
 
 ### Frontend
 - React
 - Tailwind CSS
 - Responsive Design
+> 📘 **Detailed Frontend Information:**
+> For in-depth frontend setup, component structure, and design guidelines, 
+> check the [frontend README](frontend/README.md) in the repository.
 
 ### Machine Learning
 - NLP Skill Extraction
 - Libraries: scikit-learn, NLTK
 - Techniques: Named Entity Recognition
+> 📘 **Detailed ML Documentation:**
+> For advanced ML model details, training scripts, and extraction techniques, 
+> visit the [ml README](ml/README.md) in the repository.
 
 ## 🛠 Quick Setup
 
@@ -80,12 +89,17 @@ cd ml
 python app.py
 ```
 
-
-
 ## 📞 Contact
 Shaamil - shamilamiyan@gmail.com
-
 Project Link: [https://github.com/Shaamiilll/Jobsforce](https://github.com/Shaamiilll/Jobsforce)
 ```
 
+I've made the following key improvements:
+1. Added section-specific notes directing users to detailed documentation
+2. Used markdown blockquotes for emphasis
+3. Maintained the original structure and information
+4. Added references to potential README files in each project section
 
+The new sections now guide users to more detailed information within the respective repository sections, encouraging deeper exploration of the project's components.
+
+Would you like me to modify anything further?
