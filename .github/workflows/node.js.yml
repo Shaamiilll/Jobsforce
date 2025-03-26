@@ -3,6 +3,8 @@ name: Node.js CI/CD
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - "backend/**"  # Trigger only when changes are made inside the backend folder
 
 jobs:
   build:
@@ -10,7 +12,6 @@ jobs:
     strategy:
       matrix:
         node-version: [22.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/s
 
     steps:
     - uses: actions/checkout@v4
@@ -20,6 +21,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
+      working-directory: backend  # Ensure npm install runs in the backend folder
     - run: |
         touch .env
         echo "${{ secrets.PROD_ENV_FILE }}" > .env
+      working-directory: backend  # Ensure the .env is created in the correct folder
