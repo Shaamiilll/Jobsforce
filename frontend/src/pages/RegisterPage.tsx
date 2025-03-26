@@ -34,9 +34,22 @@ const RegisterPage = () => {
                 email: formData.email,
                 password: formData.password,
             });
-            localStorage.setItem('token', response.data.token);
-            toast.success('Registration successful!');
-            navigate('/home');
+            if (response.status == 200) {
+                console.log('====================================');
+                console.log(response);
+                console.log('====================================');
+                localStorage.setItem('token', response.data.token);
+                localStorage.setItem('user', response.data.user.email);
+                toast.success('Registration successful!');
+                navigate('/home');
+            } else {
+                console.log('====================================');
+                console.log(response);
+                console.log('====================================');
+                console.log(response.data);
+                toast.error(response.data.message)
+            }
+
         } catch (err) {
             if (axios.isAxiosError(err)) {
                 const errorMsg = err.response?.data?.message || 'Registration failed. Please try again.';
