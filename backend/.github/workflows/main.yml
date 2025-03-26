@@ -37,11 +37,11 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > private_key.pem
           chmod 600 private_key.pem
           ssh -o StrictHostKeyChecking=no -i private_key.pem $EC2_USER@$EC2_HOST << 'EOF'
-            cd /path/to/your/backend/project
-            git pull origin main
-            npm install
-            npm run build
-            pm2 restart backend-app
+            cd Jobforce/backend || exit 1
+            git pull origin main || exit 1
+            npm install || exit 1
+            npm run build || exit 1
+            pm2 restart server.js || exit 1
           EOF
 
       - name: Cleanup
