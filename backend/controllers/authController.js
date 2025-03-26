@@ -6,7 +6,7 @@ import User from '../models/User.js';
 // Register Controller
 export const registerUser = async (req, res) => {
   try {
-    const {  email, password } = req.body;
+    const { email, password } = req.body;
 
     // Check if user already exists
     const userExists = await User.findOne({ email });
@@ -19,8 +19,10 @@ export const registerUser = async (req, res) => {
     const user = new User({ email, password: hashedPassword });
     await user.save();
 
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN });
 
-    res.status(201).json({ message: 'User registered successfully' });
+    res.status(200).json({ token, user });
+
 
   } catch (error) {
     res.status(500).json({ message: 'Server error', error });
@@ -35,7 +37,7 @@ export const loginUser = async (req, res) => {
     const user = await User.findOne({ email });
 
     if (!user) return res.status(404).json({ message: 'User not found' });
-    
+
     // Validate password
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) return res.status(400).json({ message: 'Invalid credentials' });
