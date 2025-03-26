@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { findJobsBySkill, uploadResume } from '../api/apiService';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { AxiosError } from 'axios';
 
 
 type UploadResult = {
@@ -31,13 +32,20 @@ const ResumeDashboard: React.FC = () => {
       try {
         const jobsData = await findJobsBySkill();
         setJobs(jobsData.jobs || []);
-      } catch (error) {
+      } catch (error: unknown) {
+        if (error instanceof AxiosError) {
+          setMessage(error.response?.data?.message || "An error occurred");
+        } else if (error instanceof Error) {
+          setMessage(error.message);
+        } else {
+          setMessage("An unknown error occurred");
+        }
         console.error("Error fetching jobs:", error);
       }
     };
   
     fetchJobs();
-  }, []); 
+  }, []);
   
   const handleLogout = () => {
     localStorage.removeItem("token")

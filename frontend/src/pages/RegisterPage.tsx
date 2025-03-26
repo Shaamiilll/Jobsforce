@@ -30,13 +30,13 @@ const RegisterPage = () => {
         }
         setLoading(true);
         try {
-            const response = await axios.post(`${HOST}/api/auth/register`, {
+            const response = await axios.post(`${HOST}/auth/register`, {
                 email: formData.email,
                 password: formData.password,
             });
             localStorage.setItem('token', response.data.token);
             toast.success('Registration successful!');
-            navigate('/dashboard');
+            navigate('/home');
         } catch (err) {
             if (axios.isAxiosError(err)) {
                 const errorMsg = err.response?.data?.message || 'Registration failed. Please try again.';

@@ -3,6 +3,7 @@ import axios from 'axios';
 const API_URL = import.meta.env.VITE_HOST_URL || 'http://localhost:5000/api';
 const token = localStorage.getItem('token')
 
+// for uploading the resume
 export const uploadResume = async (file: File) => {
   const formData = new FormData();
   formData.append('resume', file);
@@ -20,6 +21,8 @@ export const uploadResume = async (file: File) => {
   }
 };
 
+
+// for fetching the recommended jobs
 export const findJobsBySkill = async () => {
   try {
     const response = await axios.get(
@@ -32,6 +35,7 @@ export const findJobsBySkill = async () => {
     );
     return response.data;
   } catch (error) {
+    
     console.error('Error fetching jobs by skill:', error);
     throw error;
   }
