@@ -1,2 +1,5 @@
 pdfminer.six
 docx2txt
+fastapi
+uvicorn
+requests
