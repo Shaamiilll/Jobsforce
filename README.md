@@ -16,7 +16,7 @@ jobsforce/
 ## 🔗 Live Links
 - **Frontend:** [https://shamil-jobforce.vercel.app/](https://shamil-jobforce.vercel.app/)
 - **Backend API:** [https://jobforceapi.watchlab.in/api](https://jobforceapi.watchlab.in/api)
-- **ML-api:** [https://jobsforce-jet.vercel.app](https://jobsforce-jet.vercel.app)
+- **ML-api:** [https://jobsforce-jet.vercel.app](https://jobsforce-jet.vercel.app/health)
 
 ## 🔧 Technology Stack
 
