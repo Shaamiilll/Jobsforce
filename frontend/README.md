@@ -1,54 +1,77 @@
-# React + TypeScript + Vite
+# 🚀 Jobsforce Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
+Modern React application for job recommendations built with Vite and TypeScript.
 
-Currently, two official plugins are available:
+## 🛠 Tech Stack
+- React.js
+- Vite
+- TypeScript
+- Tailwind CSS
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📦 Prerequisites
+- Node.js 18+
+- npm 9+
 
-## Expanding the ESLint configuration
+## 🚀 Quick Start
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Installation
+```bash
+# Clone repository
+git clone <your-repo-url>
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+# Navigate to project
+cd frontend
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### Build for Production
+```bash
+npm run build
 ```
+
+## 📁 Project Structure
+- `src/`: Source code
+- `public/`: Static assets
+- `vite.config.ts`: Vite configuration
+- `tsconfig.json`: TypeScript configuration
+
+## 🌐 Application Workflow
+
+### Authentication Flow
+1. User enters login credentials
+2. Backend validates credentials
+3. JWT token generated and stored
+4. User redirected to dashboard
+
+### Resume Upload Process
+1. User navigates to resume upload section
+2. Select and upload resume file
+3. Backend processes resume and extracts skills
+4. Generate personalized job recommendations
+
+### Job Recommendation
+- Initial recommendations based on uploaded resume
+- Continuous updates with latest matching jobs
+- Personalized matching algorithm
+
+## 🔒 Security Features
+- JWT-based authentication
+- Secure token storage
+- Protected routes
+- Input validation
+
+## 🔧 Available Scripts
+- `dev`: Start development server
+- `build`: Compile for production
+
+## 📞 Contact
+Shaamil
+- Email: shamilamiyan@gmail.com
+- GitHub: Shaamiilll
+
