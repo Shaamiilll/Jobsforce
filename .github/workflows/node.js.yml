@@ -7,7 +7,7 @@ on:
       - "backend/**"  # Trigger only when changes occur in the backend folder
 
 jobs:
-  build:
+  deploy:
     runs-on: self-hosted
     strategy:
       matrix:
@@ -22,14 +22,14 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-dependency-path: backend/package-lock.json  # Cache npm dependencies
+        cache-dependency-path: backend/package-lock.json  # Cache dependencies
 
     - name: Verify Backend Directory and Files
-      run: ls -la backend  # Debugging: Check if package-lock.json exists
+      run: ls -la backend  # Debugging: Check if package.json exists
 
     - name: Install Dependencies
       run: |
-        if [ -f "package-lock.json" ]; then
+        if [ -f "backend/package-lock.json" ]; then
           npm ci
         else
           npm install
@@ -42,6 +42,7 @@ jobs:
         echo "${{ secrets.PROD_ENV_FILE }}" > .env
       working-directory: backend
 
-    - name: Restart Server with PM2
-      run: pm2 restart server.js
+    - name: Restart Backend with PM2
+      run: |
+        pm2 restart server.js || pm2 start server.js
       working-directory: backend
