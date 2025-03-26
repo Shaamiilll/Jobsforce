@@ -25,6 +25,9 @@ export const fetchJobsFromAPI = async () => {
     await Job.insertMany(jobs);
     console.log("✅ Jobs Fetched and Stored Successfully");
   } catch (error) {
+    console.log('====================================');
+    console.log(error);
+    console.log('====================================');
     console.error("❌ Error Fetching Jobs:", error.message);
   }
 };

@@ -5,6 +5,7 @@
   import ResumeRoutes from './routes/resumeRoutes.js';
   import jobsRoutes from './routes/jobsRoutes.js';
   import { fetchJobsFromAPI } from './utils/jobFetcher.js';
+import Job from './models/job.js';
 
   const app = express();
 
@@ -13,7 +14,7 @@
   app.use(morgan('dev'));
   app.use(express.json()); 
 
-  fetchJobsFromAPI()
+  // fetchJobsFromAPI()
 
   // API Routes
   app.use('/api/auth', authRoutes);
